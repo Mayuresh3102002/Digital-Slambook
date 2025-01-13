@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -44,13 +45,10 @@ public class AdminController {
 		 return null;
 	}
 	
-	@PostMapping(path = "/updateadmin")
+	// ***CORRECTION NEEDED
+	@PutMapping(path = "/updateadmin")
 	protected Admin updateAdmin(@RequestBody Admin admin) {
-		Admin updatedAdmin = adminService.updateAdmin(admin);
-		if(updatedAdmin != null) {
-			return updatedAdmin;
-		} 
-		return null;
+		return adminService.updateAdmin(admin);
 	}
 	
 	@DeleteMapping(path = "/deleteadmin/{id}")

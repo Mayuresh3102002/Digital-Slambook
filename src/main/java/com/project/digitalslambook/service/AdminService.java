@@ -27,14 +27,7 @@ public class AdminService {
 		return adminRepository.findByAge(byage);
 	}
 
-	public Admin updateAdmin(Admin admin) {
-		admin.setName(admin.getName());
-		admin.setMobile(admin.getMobile());
-		admin.setAbout(admin.getAbout());
-		admin.setAge(admin.getAge());
-		admin.setAmbition(admin.getAmbition());
-		admin.setApprating(admin.getApprating());
-		
+	public Admin updateAdmin(Admin admin) {		
 		return adminRepository.save(admin);
 	}
 
