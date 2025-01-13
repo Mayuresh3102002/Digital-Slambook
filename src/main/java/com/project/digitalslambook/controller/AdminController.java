@@ -31,5 +31,7 @@ public class AdminController {
 			return "User not found!";
 		}
 	}
+	
+	// IMPLEMENTED SUCCESSFULLY ON BOTH THE DEVICE
 
 }
