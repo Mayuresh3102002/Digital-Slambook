@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.project.digitalslambook.entity.Admin;
@@ -51,10 +52,14 @@ public class AdminController {
 		return adminService.updateAdmin(admin);
 	}
 	
-	@DeleteMapping(path = "/deleteadmin/{id}")
-	protected Admin deleteAdmin(@PathVariable int id) {
-		return adminService.deleteAdmin(id);
+	@DeleteMapping(path = "/deleteadmin")
+	protected String deleteAdmin(@RequestParam int id) {
+		Admin deletedAdmin = adminService.deleteAdmin(id);
+		if(deletedAdmin != null) {
+			return "Admin is deleted!!";
+		} else {
+			return "Invalid admin id";
+		}
 	}
-	// end
 
 }

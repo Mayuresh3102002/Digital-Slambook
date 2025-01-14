@@ -1,7 +1,6 @@
 package com.project.digitalslambook.service;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -32,11 +31,11 @@ public class AdminService {
 	}
 
 	public Admin deleteAdmin(int id) {
-		Optional<Admin> admin = adminRepository.findById(id);
+		Admin admin = adminRepository.findById(id).orElse(null);
 		if(admin != null) {
-			adminRepository.deleteById(id);
-		}
-		return null;
+			adminRepository.delete(admin);
+		} 
+		return admin;
 	}
 
 }
