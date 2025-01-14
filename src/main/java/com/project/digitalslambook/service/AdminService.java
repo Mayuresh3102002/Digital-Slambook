@@ -26,16 +26,34 @@ public class AdminService {
 		return adminRepository.findByAge(byage);
 	}
 
-	public Admin updateAdmin(Admin admin) {		
-		return adminRepository.save(admin);
+	public Admin updateAdmin(Admin adminDetails, int id) {
+	    Admin existingAdmin = findAdminById(id);
+	    if (existingAdmin != null) {
+	        existingAdmin.setName(adminDetails.getName());
+	        existingAdmin.setAge(adminDetails.getAge());
+	        existingAdmin.setMobile(adminDetails.getMobile());
+	        existingAdmin.setAbout(adminDetails.getAbout());
+	        existingAdmin.setAmbition(adminDetails.getAmbition());
+	        existingAdmin.setApprating(adminDetails.getApprating());
+	        return adminRepository.save(existingAdmin);
+	    }
+	    return null; 
 	}
 
 	public Admin deleteAdmin(int id) {
-		Admin admin = adminRepository.findById(id).orElse(null);
+		Admin admin = adminRepository.findById(id);
 		if(admin != null) {
 			adminRepository.delete(admin);
 		} 
 		return admin;
+	}
+
+	public Admin findAdminById(int adminId) {
+		Admin admin =  adminRepository.findById(adminId);
+		if(admin != null)
+			return admin;
+		else
+			return null;
 	}
 
 }

@@ -36,7 +36,6 @@ public class AdminController {
 		}
 	}
 	
-	// 14-JAN-25
 	@GetMapping(path = "/findadmins/{byage}")
 	protected List<Admin> findAdminByAge(@PathVariable int byage) {
 		 List<Admin> admins = adminService.findAdminByAge(byage);
@@ -46,10 +45,9 @@ public class AdminController {
 		 return null;
 	}
 	
-	// ***CORRECTION NEEDED
 	@PutMapping(path = "/updateadmin")
-	protected Admin updateAdmin(@RequestBody Admin admin) {
-		return adminService.updateAdmin(admin);
+	protected Admin updateAdmin(@RequestBody Admin admin, @RequestParam int id) {
+	    return adminService.updateAdmin(admin, id);
 	}
 	
 	@DeleteMapping(path = "/deleteadmin")

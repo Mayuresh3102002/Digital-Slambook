@@ -12,4 +12,6 @@ public interface AdminRepository extends JpaRepository<Admin, Integer> {
 	
 	List<Admin> findByAge(int byage);
 	
+	Admin findById(int adminid);
+	
 }
