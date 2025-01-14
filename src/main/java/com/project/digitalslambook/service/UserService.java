@@ -36,4 +36,26 @@ public class UserService {
 		return users;
 	}
 
+	public User deleteUser(int id) {
+		User user = userRepository.findById(id);
+		if(user != null)
+			userRepository.delete(user);
+		return user;
+		
+	}
+
+	public User updatedUser(User user, int id) {
+		User existingUser = userRepository.findById(id);
+		if(existingUser != null) {
+			existingUser.setName(user.getName());
+			existingUser.setAge(user.getAge());
+			existingUser.setMobile(user.getMobile());
+			existingUser.setAbout(user.getAbout());
+			existingUser.setAmbition(user.getAmbition());
+			existingUser.setApprating(user.getApprating());
+			userRepository.save(existingUser);
+		}
+		return existingUser;
+	}
+
 }

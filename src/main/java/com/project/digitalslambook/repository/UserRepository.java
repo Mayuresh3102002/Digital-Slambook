@@ -8,4 +8,6 @@ import com.project.digitalslambook.entity.User;
 @Repository
 public interface UserRepository extends JpaRepository<User, Integer> {
 	
+	User findById(int id);
+	
 }
